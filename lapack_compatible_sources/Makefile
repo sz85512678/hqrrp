@@ -14,15 +14,15 @@ LIBS_MKL_32 =  ${MKLROOT}/lib/libmkl_intel_lp64.a ${MKLROOT}/lib/libmkl_sequenti
 
 # Defintions of rules.
 
-simple_test.x : simple_test.o NoFLA_HQRRP_WY_blk_var4.o
+simple_test_64.x : simple_test_64.o NoFLA_HQRRP_WY_blk_var4.o
 	$(LD) $(LDFLAGS) \
-            -o simple_test.x \
-            simple_test.o \
+            -o simple_test_64.x \
+            simple_test_64.o \
             NoFLA_HQRRP_WY_blk_var4.c -lm \
             ${LIBS_MKL_32} -L/usr/local/opt/llvm/lib
 
-simple_test.o : simple_test.c
-	$(CC) $(CCFLAGS) -O -fopenmp -c simple_test.c
+simple_test_64.o : simple_test_64.c
+	$(CC) $(CCFLAGS) -O -fopenmp -c simple_test_64.c
 
 %.o : %.c
 	$(CC) $(CCFLAGS) -c $< -o $@
