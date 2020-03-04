@@ -4,3 +4,5 @@
 *.mexmaci64
 .*DS_Store
 *.a
+penmap
+*.x

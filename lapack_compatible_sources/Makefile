@@ -2,9 +2,9 @@
 # Defintions of variables.
 
 CC      = /usr/local/opt/llvm/bin/clang
-CCFLAGS = -O -fopenmp
+CCFLAGS = -O0 -g -fopenmp
 LD      = /usr/local/opt/llvm/bin/clang
-LDFLAGS = -O -fopenmp
+LDFLAGS = -O0 -g -fopenmp
 
 INCLUDES= -I./include
 
@@ -16,15 +16,23 @@ LIBS_MKL_32 =  ${MKLROOT}/lib/libmkl_intel_lp64.a ${MKLROOT}/lib/libmkl_sequenti
 
 # Defintions of rules.
 
-simple_test_64.x : simple_test_64.o NoFLA_HQRRP_WY_blk_var4.o
+# all: simple_test.x simple_test_64.x
+
+simple_test_64.x : simple_test_64.o NoFLA_HQRRP_WY_blk_var4.o dgeqp4_INT.o
 	$(LD) $(INCLUDES) $(LDFLAGS) \
             -o simple_test_64.x \
             simple_test_64.o \
-            NoFLA_HQRRP_WY_blk_var4.c -lm \
+            NoFLA_HQRRP_WY_blk_var4.c \
+            dgeqp4_INT.c -lm \
             ${LIBS_MKL_32} -L/usr/local/opt/llvm/lib
 
-simple_test_64.o : simple_test_64.c
-	$(CC) $(INCLUDES) $(CCFLAGS) -O -fopenmp -c simple_test_64.c
+simple_test.x : simple_test.o NoFLA_HQRRP_WY_blk_var4.o dgeqp4_INT.o
+	$(LD) $(INCLUDES) $(LDFLAGS) \
+            -o simple_test.x \
+            simple_test.o \
+            NoFLA_HQRRP_WY_blk_var4.c \
+            dgeqp4_INT.c -lm \
+            ${LIBS_MKL_32} -L/usr/local/opt/llvm/lib
 
 %.o : %.c
 	$(CC) $(INCLUDES) $(CCFLAGS) -c $< -o $@
