@@ -3,7 +3,7 @@
 #include <math.h>
 #include "NoFLA_HQRRP_WY_blk_var4.h"
 
-void dgeqp4_INT( INT * m, INT * n, double * A, INT * lda, INT * jpvt, double * tau,
+void dgeqp4_wrapper( INT * m, INT * n, double * A, INT * lda, INT * jpvt, double * tau,
         double * work, INT * lwork, INT * info ) {
 // 
 // This routine wraps around dgeqp4 to accept any integer type

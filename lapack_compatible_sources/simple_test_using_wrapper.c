@@ -73,7 +73,7 @@ int main( int argc, char *argv[] ) {
   // Factorize matrix.
   printf( "%% Just before computing factorization.\n" );
   // New factorization.
-  dgeqp4_INT( & m_A, & n_A, buff_A, & ldim_A, buff_p, buff_tau, 
+  dgeqp4_wrapper( & m_A, & n_A, buff_A, & ldim_A, buff_p, buff_tau, 
           buff_wk_qp4, & lwork, & info );
   // Current factorization.
   // dgeqp3_( & m_A, & n_A, buff_A, & ldim_A, buff_p, buff_tau, 
