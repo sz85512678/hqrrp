@@ -1,1 +1,1 @@
-typedef int INT;
+typedef long INT;
