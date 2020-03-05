@@ -1,22 +1,5 @@
-
-# Defintions of variables.
-
-CC      = icc
-CCFLAGS = -O3 -fopenmp
-LD      = icc
-LDFLAGS = -O3 -fopenmp
-
-INCLUDES= -I./include
-
-LIBS_MKL_64 =  ${MKLROOT}/lib/libmkl_intel_ilp64.a \
-${MKLROOT}/lib/libmkl_sequential.a \
-${MKLROOT}/lib/libmkl_core.a -lpthread -lm -ldl
-
-LIBS_MKL_32 =  ${MKLROOT}/lib/libmkl_intel_lp64.a ${MKLROOT}/lib/libmkl_sequential.a ${MKLROOT}/lib/libmkl_core.a -lpthread -lm -ldl
-
-# Defintions of rules.
-
-# all: simple_test.x simple_test_64.x
+CONFIG=config
+include ${CONFIG}.mk
 
 # Overall function compatible to both int or long, to be finished
 
