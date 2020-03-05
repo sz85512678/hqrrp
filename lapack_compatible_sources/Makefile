@@ -1,10 +1,10 @@
 
 # Defintions of variables.
 
-CC      = /usr/local/opt/llvm/bin/clang
-CCFLAGS = -O0 -g -fopenmp
-LD      = /usr/local/opt/llvm/bin/clang
-LDFLAGS = -O0 -g -fopenmp
+CC      = icc
+CCFLAGS = -O3 -fopenmp
+LD      = icc
+LDFLAGS = -O3 -fopenmp
 
 INCLUDES= -I./include
 
@@ -45,10 +45,13 @@ simple_test.x : simple_test.o NoFLA_HQRRP_WY_blk_var4.o dgeqp4_INT.o
             dgeqp4_INT.c -lm \
             ${LIBS_MKL_32} -L/usr/local/opt/llvm/lib
 
+test_ilaenv: test_ilaenv.c
+	$(CC) -o $@.out $< $(CCFLAGS) $(INCLUDES) $(LIBS_MKL_64)     
+
 
 %.o : %.c
 	$(CC) $(INCLUDES) $(CCFLAGS) -c $< -o $@
 
 clean: 
-	rm -f a.out *.x *.o *~ core
+	rm -rf a.out *.x *.o *~ core *.dSYM
 

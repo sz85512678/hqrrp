@@ -165,7 +165,7 @@ void dgeqp4_INT( INT * m, INT * n, double * A, INT * lda, INT * jpvt, double * t
       lwkopt = 1;
     } else {
       iws    = 3 * n_A + 1;
-      nb     = ilaenv_( & INB, "DGEQRF", ' ', & m_A, & n_A, & i_minus_one, 
+      nb     = ilaenv_( & INB, "DGEQRF", " ", & m_A, & n_A, & i_minus_one, 
                         & i_minus_one );
       lwkopt = 2 * n_A + ( n_A + 1 ) * nb;
     }
